@@ -4,6 +4,7 @@
 A modern, interactive web application to generate lotto numbers (6 out of 45). The app features a vibrant UI, smooth animations, and is built using modern web standards like Web Components and Baseline CSS.
 
 ## Features
+- **Navigation Bar**: Sticky navigation with smooth scrolling to key sections (Lotto Generation, Partnership Inquiry).
 - **Number Generation**: Generate 6 random numbers between 1 and 45.
 - **Vibrant UI**: Color-coded balls based on number ranges.
 - **History**: Store and view previously generated numbers (up to 10 entries).
@@ -18,6 +19,7 @@ A modern, interactive web application to generate lotto numbers (6 out of 45). T
 - **Interactivity**: Glow effects on buttons, interactive hover states.
 
 ## Implementation Details
+- **Navigation**: Implemented using a sticky header with `backdrop-filter` and CSS `scroll-behavior: smooth`.
 - **Web Component**: `LottoBall` handles its own styling and logic for different sizes and colors.
 - **Modern CSS**: Uses `@layer`, `@container`, and `backdrop-filter`.
 - **Form Integration**: Formspree is used for handling the partnership form submission.
@@ -29,3 +31,5 @@ A modern, interactive web application to generate lotto numbers (6 out of 45). T
 - [x] Update `style.css`.
 - [x] Implement `main.js`.
 - [x] Add Partnership Inquiry Form (Formspree).
+- [x] Add Sticky Navigation Bar with smooth scrolling.
+- [x] Deploy to Firebase.

@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="#generator" class="nav-link">로또생성</a>
+      <a href="#partnership" class="nav-link">제휴문의</a>
+    </div>
+  </nav>
+
   <div class="app-container">
     <header>
       <h1>로또 번호 생성기</h1>
@@ -14,7 +21,7 @@
     </header>
 
     <main>
-      <section class="generator-section">
+      <section id="generator" class="generator-section">
         <div id="balls-container" class="balls-container">
           <!-- Lotto balls will be generated here -->
         </div>
@@ -28,7 +35,8 @@
         </div>
         <button id="clear-history-btn" class="text-button">내역 삭제</button>
       </section>
-      <section class="partnership-section">
+      
+      <section id="partnership" class="partnership-section">
         <div class="glass-card">
           <h2>제휴 문의</h2>
           <p>함께 성장할 파트너를 찾습니다.</p>
