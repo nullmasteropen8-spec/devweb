@@ -259,6 +259,56 @@
     justify-content: space-between;
   }
 
+  .content-rich-section {
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .guide-content h3 {
+    font-size: 1.15rem;
+    margin: 1.5rem 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .guide-content p {
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    line-height: 1.7;
+  }
+
+  .faq-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-item h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+
+  .faq-item p {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+  }
+
+  .footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .footer-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--primary-color);
+  }
+
   .partnership-section {
     margin-top: 1rem;
   }
