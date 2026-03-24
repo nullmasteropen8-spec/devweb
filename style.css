@@ -199,6 +199,49 @@
     text-decoration: underline;
   }
 
+  .animal-test-section {
+    margin-top: 1rem;
+  }
+
+  .test-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .webcam-wrapper {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    background: #e2e8f0;
+  }
+
+  .webcam-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .label-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .label-wrapper div {
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    justify-content: space-between;
+  }
+
   .partnership-section {
     margin-top: 1rem;
   }

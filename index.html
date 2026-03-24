@@ -5,19 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>로또 번호 생성기</title>
   <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-content">
       <a href="#generator" class="nav-link">로또생성</a>
+      <a href="#animal-test" class="nav-link">동물상 테스트</a>
       <a href="#partnership" class="nav-link">제휴문의</a>
     </div>
   </nav>
 
   <div class="app-container">
     <header>
-      <h1>로또 번호 생성기</h1>
-      <p>당신의 행운의 숫자를 확인하세요!</p>
+      <h1>로또 & 동물상 테스트</h1>
+      <p>행운의 번호와 당신의 동물상을 확인하세요!</p>
     </header>
 
     <main>
@@ -26,6 +29,18 @@
           <!-- Lotto balls will be generated here -->
         </div>
         <button id="generate-btn" class="glow-button">번호 생성하기</button>
+      </section>
+
+      <section id="animal-test" class="animal-test-section">
+        <div class="glass-card">
+          <h2>동물상 테스트</h2>
+          <p>카메라를 통해 당신의 동물상을 확인해보세요!</p>
+          <div class="test-container">
+            <button type="button" class="glow-button small" onclick="initAnimalTest()">테스트 시작</button>
+            <div id="webcam-container" class="webcam-wrapper"></div>
+            <div id="label-container" class="label-wrapper"></div>
+          </div>
+        </div>
       </section>
 
       <section class="history-section">
