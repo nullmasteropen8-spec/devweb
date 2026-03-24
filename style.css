@@ -210,18 +210,35 @@
     gap: 1.5rem;
   }
 
-  .webcam-wrapper {
-    width: 200px;
-    height: 200px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-    background: #e2e8f0;
+  .upload-wrapper label {
+    display: inline-block;
+    cursor: pointer;
   }
 
-  .webcam-wrapper canvas {
-    width: 100% !important;
-    height: 100% !important;
+  .image-preview-wrapper {
+    width: 250px;
+    height: 250px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .image-preview-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .placeholder-text {
+    color: var(--secondary-color);
+    font-size: 0.875rem;
+    text-align: center;
   }
 
   .label-wrapper {

@@ -4,8 +4,9 @@
 A modern, interactive web application to generate lotto numbers (6 out of 45). The app features a vibrant UI, smooth animations, and is built using modern web standards like Web Components and Baseline CSS.
 
 ## Features
-- **Navigation Bar**: Sticky navigation with smooth scrolling to key sections (Lotto Generation, Partnership Inquiry).
+- **Navigation Bar**: Sticky navigation with smooth scrolling to key sections (Lotto Generation, Animal Test, Partnership Inquiry).
 - **Number Generation**: Generate 6 random numbers between 1 and 45.
+- **Animal Face Test**: Analyze your animal face type by uploading a photo (powered by Teachable Machine).
 - **Vibrant UI**: Color-coded balls based on number ranges.
 - **History**: Store and view previously generated numbers (up to 10 entries).
 - **Partnership Inquiry**: Send inquiries via Formspree integration.
@@ -20,6 +21,7 @@ A modern, interactive web application to generate lotto numbers (6 out of 45). T
 
 ## Implementation Details
 - **Navigation**: Implemented using a sticky header with `backdrop-filter` and CSS `scroll-behavior: smooth`.
+- **Animal Test**: Image upload processing using TensorFlow.js and a Teachable Machine trained model.
 - **Web Component**: `LottoBall` handles its own styling and logic for different sizes and colors.
 - **Modern CSS**: Uses `@layer`, `@container`, and `backdrop-filter`.
 - **Form Integration**: Formspree is used for handling the partnership form submission.
@@ -32,4 +34,5 @@ A modern, interactive web application to generate lotto numbers (6 out of 45). T
 - [x] Implement `main.js`.
 - [x] Add Partnership Inquiry Form (Formspree).
 - [x] Add Sticky Navigation Bar with smooth scrolling.
+- [x] Implement Animal Face Test (Photo Upload).
 - [x] Deploy to Firebase.

@@ -34,10 +34,16 @@
       <section id="animal-test" class="animal-test-section">
         <div class="glass-card">
           <h2>동물상 테스트</h2>
-          <p>카메라를 통해 당신의 동물상을 확인해보세요!</p>
+          <p>사진을 업로드하여 당신의 동물상을 확인해보세요!</p>
           <div class="test-container">
-            <button type="button" class="glow-button small" onclick="initAnimalTest()">테스트 시작</button>
-            <div id="webcam-container" class="webcam-wrapper"></div>
+            <div class="upload-wrapper">
+              <label for="image-upload" class="glow-button small">사진 업로드</label>
+              <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+            </div>
+            <div id="image-preview-container" class="image-preview-wrapper">
+              <!-- Uploaded image will be shown here -->
+              <p class="placeholder-text">사진을 업로드해주세요</p>
+            </div>
             <div id="label-container" class="label-wrapper"></div>
           </div>
         </div>

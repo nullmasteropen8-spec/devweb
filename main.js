@@ -160,72 +160,65 @@ if (clearHistoryBtn) {
 if (historyList) renderHistory();
 
 /**
- * Animal Face Test (Teachable Machine)
+ * Animal Face Test (Teachable Machine) - File Upload Version
  */
 const ANIMAL_MODEL_URL = "https://teachablemachine.withgoogle.com/models/lVk_oBQsX/";
-let animalModel, animalWebcam, animalLabelContainer, animalMaxPredictions;
+let animalModel, animalLabelContainer, animalMaxPredictions;
 
-window.initAnimalTest = async function() {
-    const modelURL = ANIMAL_MODEL_URL + "model.json";
-    const metadataURL = ANIMAL_MODEL_URL + "metadata.json";
+window.handleImageUpload = async function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
 
-    const startBtn = document.querySelector('.animal-test-section .glow-button');
-    if (startBtn) {
-        startBtn.disabled = true;
-        startBtn.textContent = '모델 로딩 중...';
-    }
+    const previewContainer = document.getElementById('image-preview-container');
+    const labelContainer = document.getElementById('label-container');
+    const uploadLabel = document.querySelector('.upload-wrapper label');
 
-    try {
+    // Show loading state
+    uploadLabel.textContent = '분석 중...';
+    labelContainer.innerHTML = '모델 로딩 및 분석 중...';
+
+    // 1. Load Model if not loaded
+    if (!animalModel) {
+        const modelURL = ANIMAL_MODEL_URL + "model.json";
+        const metadataURL = ANIMAL_MODEL_URL + "metadata.json";
         animalModel = await tmImage.load(modelURL, metadataURL);
         animalMaxPredictions = animalModel.getTotalClasses();
+    }
 
-        const flip = true;
-        animalWebcam = new tmImage.Webcam(200, 200, flip);
-        await animalWebcam.setup();
-        await animalWebcam.play();
-        window.requestAnimationFrame(animalLoop);
+    // 2. Preview Image
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+        const imgElement = document.createElement('img');
+        imgElement.src = e.target.result;
+        imgElement.onload = async () => {
+            previewContainer.innerHTML = '';
+            previewContainer.appendChild(imgElement);
 
-        const webcamContainer = document.getElementById("webcam-container");
-        if (webcamContainer) {
-            webcamContainer.innerHTML = '';
-            webcamContainer.appendChild(animalWebcam.canvas);
-        }
-        
-        animalLabelContainer = document.getElementById("label-container");
-        if (animalLabelContainer) {
-            animalLabelContainer.innerHTML = '';
+            // 3. Predict
+            const prediction = await animalModel.predict(imgElement);
+            labelContainer.innerHTML = '';
+            
+            // Sort predictions by probability
+            prediction.sort((a, b) => b.probability - a.probability);
+
             for (let i = 0; i < animalMaxPredictions; i++) {
-                animalLabelContainer.appendChild(document.createElement("div"));
+                const className = prediction[i].className;
+                const probability = (prediction[i].probability * 100).toFixed(1);
+                
+                const div = document.createElement('div');
+                div.innerHTML = `<span>${className}</span> <span>${probability}%</span>`;
+                
+                // Highlight the top prediction
+                if (i === 0) {
+                    div.style.background = 'var(--primary-glow)';
+                    div.style.color = 'var(--primary-color)';
+                    div.style.fontWeight = '700';
+                }
+                
+                labelContainer.appendChild(div);
             }
-        }
-        
-        if (startBtn) startBtn.textContent = '테스트 중';
-    } catch (e) {
-        console.error(e);
-        alert('카메라 접근 권한이 필요합니다.');
-        if (startBtn) {
-            startBtn.disabled = false;
-            startBtn.textContent = '테스트 시작';
-        }
-    }
-}
-
-async function animalLoop() {
-    if (animalWebcam) {
-        animalWebcam.update();
-        await animalPredict();
-        window.requestAnimationFrame(animalLoop);
-    }
-}
-
-async function animalPredict() {
-    if (!animalModel || !animalWebcam || !animalLabelContainer) return;
-    const prediction = await animalModel.predict(animalWebcam.canvas);
-    for (let i = 0; i < animalMaxPredictions; i++) {
-        const className = prediction[i].className;
-        const probability = (prediction[i].probability * 100).toFixed(1);
-        if (animalLabelContainer.childNodes[i]) {
-            animalLabelContainer.childNodes[i].innerHTML = `<span>${className}</span> <span>${probability}%</span>`;
-        }
-    }
+            uploadLabel.textContent = '사진 업로드';
+        };
+    };
+    reader.readAsDataURL(file);
 }
