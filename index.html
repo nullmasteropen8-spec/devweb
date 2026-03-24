@@ -1,14 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+  <title>로또 번호 생성기</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <div class="app-container">
+    <header>
+      <h1>로또 번호 생성기</h1>
+      <p>당신의 행운의 숫자를 확인하세요!</p>
+    </header>
+
+    <main>
+      <section class="generator-section">
+        <div id="balls-container" class="balls-container">
+          <!-- Lotto balls will be generated here -->
+        </div>
+        <button id="generate-btn" class="glow-button">번호 생성하기</button>
+      </section>
+
+      <section class="history-section">
+        <h2>최근 생성 내역</h2>
+        <div id="history-list" class="history-list">
+          <!-- History items will be added here -->
+        </div>
+        <button id="clear-history-btn" class="text-button">내역 삭제</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 행운을 빌어요!</p>
+    </footer>
+  </div>
+  <script defer type="module" src="/main.js"></script>
 </body>
 </html>
